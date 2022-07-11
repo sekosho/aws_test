@@ -1,0 +1,28 @@
+service: deploy-test
+# 使用するクラウドサービス(AWS)と言語(Node.js)を指定
+provider:
+ name: aws
+ region: ap-northeast-1
+ runtime: nodejs14.x
+ stage: stage
+ lambdaHashingVersion: 20201221
+ deploymentBucket:
+    name: auto-deploy-test-sesoko
+functions:
+ deploy-test-sites:
+    handler: index.handler
+    name: deploy-test
+    description: 'deploy-test'
+    runtime: nodejs14.x
+    role: arn:aws:iam::xxx[Lambdaで使用するロール]
+        
+custom:
+ serverless-layers:
+    layersDeploymentBucket: auto-deploy-test-sesoko
+plugins:
+ - serverless-layers
+# Exclude files from deployment
+package:
+ patterns:
+    - '!package.json'
+    - '!package-lock.json'

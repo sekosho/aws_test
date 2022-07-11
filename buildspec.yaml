@@ -1,0 +1,12 @@
+version: 0.2
+phases:
+ install:
+    commands:
+     - npm install -g serverless
+     - npm install -g serverless-layers
+ build:
+    commands:
+     - serverless deploy
+ post_build:
+    commands:
+     - echo Build completed on `date`
