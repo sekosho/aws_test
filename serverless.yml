@@ -14,7 +14,7 @@ functions:
     name: deploy-test
     description: 'deploy-test'
     runtime: nodejs14.x
-    role: arn:aws:iam::xxx[Lambdaで使用するロール]
+    role: arn:aws:iam::952594751252:role/auto-deploy-sesoko
         
 custom:
  serverless-layers:
